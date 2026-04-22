@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VECTORES_MATRICES {
@@ -60,7 +59,7 @@ public class VECTORES_MATRICES {
         System.out.println("Numero maximo: " + max);
         System.out.println("Numero minimo: " + min);*/
 
-    //PROGRAMA QUE TE PIDE 20 NUMEROS Y TE SUMA SI HAY POSITIVO Y SI HAY NEGATIVOS
+    //PROGRAMA QUE TE PIDE 20 NUMEROS Y TE SUMA SI HAY POSITIVO Y SI HAY NEGATIVOS//
     /*  ArrayList <Integer> numeros = new ArrayList<>();
         Scanner scanner = new Scanner (System.in);
         int sumapositivos=0;
@@ -82,7 +81,8 @@ public class VECTORES_MATRICES {
         System.out.println("Suma de los numeros positivos: " + sumapositivos);
         System.out.println("Suma de los numeros negativos: " + sumanegativos);*/
 
-        ArrayList <Integer> numeros = new ArrayList<>();
+        //PROGRAMA QUE TE PIDE 20 NUMEROS Y HAGA LA MEDIA DE LAS SUM_VALORES / NUM_VALORES//
+        /* ArrayList <Integer> numeros = new ArrayList<>();
         Scanner scanner = new Scanner (System.in);
         System.out.println("Introduce 20 numeros: ");
         int suma_valores=0;
@@ -96,6 +96,23 @@ public class VECTORES_MATRICES {
 
         double media = (double) suma_valores / 20;
         System.out.println("Lista de numeros: " + numeros);
-        System.out.println("Media: " + media);
+        System.out.println("Media: " + media);*/
+
+        Scanner sc = new Scanner (System.in);
+            System.out.print("Introduce el valor de N: " );
+            int n = sc.nextInt();
+            System.out.print("Introduce el valor de M: " );
+            int m = sc.nextInt();
+           if (n < m){
+           int longitud = m - n + 1;
+           int [] num = new int [longitud];
+           for (int i = 0; i < num.length; i++) {
+                num [i] = n+i;
+                System.out.println(num[i]);
+                System.out.println("Longitud: " + longitud);
    }
-} 
+   } else  {
+        System.out.println("P debe ser menor que Q");
+   }
+}
+}

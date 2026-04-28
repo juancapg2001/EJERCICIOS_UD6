@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
     public class Array_List {
@@ -33,7 +34,7 @@ import java.util.Scanner;
     }
         System.out.println("Despues: " + valores); */
 
-        ArrayList<String> listaCompra = new ArrayList<>();
+    /*  ArrayList<String> listaCompra = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
 
@@ -74,7 +75,34 @@ import java.util.Scanner;
             if (opcion != 3) {
                 System.out.println("Lista actual: " + listaCompra);
             }
+        }*/
 
+        ArrayList<Integer> numeros = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduzca una cantidad de numeros para la lista: ");
+        int cantidad = sc.nextInt();
+        
+        for (int i = 0; i < cantidad; i++) {
+            System.out.print("Ingrese el número " + (i + 1) + ": ");
+            int num = sc.nextInt();
+            numeros.add(num);
+        }     
+        Collections.sort(numeros, Collections.reverseOrder());
+        System.out.println(numeros);
+
+        if (!numeros.isEmpty()) {
+            int mitad = numeros.size() / 2;
+            double mediana;
+
+            if (numeros.size() % 2 != 0) {
+                mediana = numeros.get(mitad);
+            } else {
+                mediana = (numeros.get(mitad - 1) + numeros.get(mitad)) / 2.0;
+            }
+            System.out.println("La mediana es: " + mediana);
+        } else {
+            System.out.println("La lista está vacía.");
         }
-    }
-}
+        }
+    } 

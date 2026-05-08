@@ -1,5 +1,7 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-    public class ejerciciosT7 {
+public class ejerciciosT7 {
         public static void resta_x_al_vector(int v[], int x) {
             for (int i = 0; i<v.length; i++)
             v [i] = v[i] - x;
@@ -56,9 +58,130 @@
             return a/b;
         }
 
-        public static void main(String[] args) {
-            
+        public static int contarVocales(String texto) {
+            int contador = 0;
+            for (int i = 0; i < texto.length(); i++) {
+                if (esVocal(texto.charAt(i))) {
+                contador++;
+                }
+            }
+        return contador;
         }
+        public static boolean esVocal(char c) {
+            c = Character.toLowerCase(c);
+            return c == 'a' | c == 'e' | c == 'i' | c == 'o' | c == 'u';
+        }
+        
+        public static int contarOcurrencias (int [] array, int valor) {
+            int contador = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i]==valor){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+        public static int valorMasFrecuente(int[] array) {
+            int masFrecuente = array[0];
+            int maxRepeticiones = 0;
+
+            for (int i = 0; i < array.length; i++) {
+                int actuales = contarOcurrencias(array, array[i]);
+            if (actuales > maxRepeticiones) {
+                maxRepeticiones = actuales;
+                masFrecuente = array[i];
+            }
+        }
+        return masFrecuente;
+        }  
+
+        public static int leerEntero(String mensaje) {
+        Scanner sc = new Scanner(System.in);
+        int numero = 0;
+        boolean esValido = false;
+        do {
+            try {
+                System.out.print(mensaje);
+                numero = sc.nextInt();
+                esValido = true; 
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debes introducir un número entero válido.");
+                sc.nextLine();
+            }
+        } while (!esValido);
+        return numero;
+    }
+    
+    static class NotaInvalidaException extends Exception {
+        public NotaInvalidaException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
+    public static void main(String[] args) {
+        double suma = 0;
+        for (int i = 1; i <= 5; i++) {
+            suma += leerNota("Introduce nota " + i + ": ");
+        }
+        System.out.printf("Media final: %.2f%n", (suma / 5));
+    }
+
+    public static void validarNota(double nota) throws NotaInvalidaException {
+        if (nota < 0 || nota > 10) {
+            // Ahora este 'new' funcionará porque la clase de arriba es 'static'
+            throw new NotaInvalidaException("La nota debe estar entre 0 y 10.");
+        }
+    }
+
+    public static double leerNota(String mensaje) {
+        java.util.Scanner teclado = new java.util.Scanner(System.in);
+        double nota = 0;
+        boolean ok = false;
+        do {
+            try {
+                System.out.print(mensaje);
+                nota = teclado.nextDouble();
+                validarNota(nota);
+                ok = true;
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Error: Introduce un número válido.");
+                teclado.nextLine();
+            } catch (NotaInvalidaException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } while (!ok);
+        return nota;
+    }
+}
+
+
+        /* public static void main(String[] args) {
+        int edad = leerEntero("Introduce tu edad: ");
+        int hijos = leerEntero("¿Cuántos hijos tienes?: ");
+        int año = leerEntero("Introduce el año actual: ");
+
+        System.out.println("Datos capturados");
+        System.out.println("Edad: " + edad + " | Hijos: " + hijos + " | Año: " + año);
+    } */
+       /*public static voi
+       d main(String[] args) {
+        Random rand = new Random();
+        int[] array = new int[15];
+        System.out.print("Array generado: ");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = rand.nextInt(5) + 1;
+            System.out.print(array[i] + " ");
+        }
+        int masRepetido = valorMasFrecuente(array);
+        System.out.println("El valor mas frecuente es: " + masRepetido);
+    }*/
+        /* public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce una frase: ");
+        String frase = sc.nextLine();
+        int total = contarVocales(frase);
+        System.out.println("La frase contiene " + total + " vocales.");
+    } */
         /* public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -124,6 +247,3 @@
             resta_x_al_vector(v, 10);
             System.out.println("Vector despues: " + Arrays.toString(v));
         } */
-    }
-
-    
